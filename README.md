@@ -3,7 +3,7 @@
 ## 依赖方式
 
 ```groovy
- implementation "com.yangcong345.platform:fragment-stack:1.0.0"
+ implementation "com.muzi:fragment-stack:1.0.0"
 ```
 
 ## 使用
