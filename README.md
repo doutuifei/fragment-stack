@@ -1,9 +1,14 @@
 # 打印Fragment栈
 
 ## 依赖方式
+[![](https://jitpack.io/v/doutuifei/fragment-stack.svg)](https://jitpack.io/#doutuifei/fragment-stack)
 
 ```groovy
- implementation "com.muzi:fragment-stack:1.0.0"
+repositories {
+    maven { url 'https://jitpack.io' }
+}
+
+implementation 'com.github.doutuifei:fragment-stack:1.0.0'
 ```
 
 ## 使用

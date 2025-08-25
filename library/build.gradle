@@ -36,7 +36,7 @@ dependencies {
 publishing {
     publications {
         release(MavenPublication) {
-            groupId = 'com.muzi'
+            groupId = 'com.github.doutuifei'
             artifactId = 'fragment-stack'
             version = '1.0.0'
             afterEvaluate {
