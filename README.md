@@ -8,7 +8,7 @@ repositories {
     maven { url 'https://jitpack.io' }
 }
 
-implementation 'com.github.doutuifei:fragment-stack:1.0.0'
+implementation 'com.github.doutuifei:fragment-stack:$version'
 ```
 
 ## 使用

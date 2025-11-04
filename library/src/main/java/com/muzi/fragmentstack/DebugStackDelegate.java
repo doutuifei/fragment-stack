@@ -25,22 +25,32 @@ public class DebugStackDelegate {
         this.mActivity = activity;
     }
 
-    public void onPostCreate() {
-        View root = mActivity.findViewById(android.R.id.content);
-        if (root instanceof FrameLayout) {
-            FrameLayout content = (FrameLayout) root;
-            final ImageView stackView = new ImageView(mActivity);
-            stackView.setImageResource(R.drawable.fragmentation_ic_stack);
-            FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            params.gravity = Gravity.END;
-            final int dp18 = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 18, mActivity.getResources().getDisplayMetrics());
-            params.topMargin = dp18 * 7;
-            params.rightMargin = dp18;
-            stackView.setLayoutParams(params);
-            content.addView(stackView);
-            stackView.setOnTouchListener(new StackViewTouchListener(stackView, dp18 / 4));
-            stackView.setOnClickListener(v -> showFragmentStackHierarchyView());
+    public void onPostCreate(FrameLayout container) {
+        if (container == null) {
+            View root = mActivity.findViewById(android.R.id.content);
+            if (root instanceof FrameLayout) {
+                container = (FrameLayout) root;
+            }
         }
+        if (container == null) {
+            return;
+        }
+        View floatButton = createFloatButton();
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        params.gravity = Gravity.END;
+        int dp18 = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 18, mActivity.getResources().getDisplayMetrics());
+        params.topMargin = dp18 * 7;
+        params.rightMargin = dp18;
+        floatButton.setLayoutParams(params);
+        container.addView(floatButton);
+    }
+
+    public View createFloatButton() {
+        ImageView stackView = new ImageView(mActivity);
+        stackView.setImageResource(R.drawable.fragmentation_ic_stack);
+        stackView.setOnTouchListener(new StackViewTouchListener(stackView, 0));
+        stackView.setOnClickListener(v -> showFragmentStackHierarchyView());
+        return stackView;
     }
 
     /**
