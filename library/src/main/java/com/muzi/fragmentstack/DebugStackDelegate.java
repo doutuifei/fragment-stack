@@ -48,7 +48,8 @@ public class DebugStackDelegate {
     public View createFloatButton() {
         ImageView stackView = new ImageView(mActivity);
         stackView.setImageResource(R.drawable.fragmentation_ic_stack);
-        stackView.setOnTouchListener(new StackViewTouchListener(stackView, 0));
+        int dp18 = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 18, mActivity.getResources().getDisplayMetrics());
+        stackView.setOnTouchListener(new StackViewTouchListener(stackView, dp18 / 4));
         stackView.setOnClickListener(v -> showFragmentStackHierarchyView());
         return stackView;
     }
