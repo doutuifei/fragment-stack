@@ -1,6 +1,0 @@
-jdk:
-  - openjdk11
-
-install:
-  - echo "Building release variant..."
-  - ./gradlew :fragment-stack:assembleRelease
