@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
@@ -25,7 +26,7 @@ public class DebugStackDelegate {
         this.mActivity = activity;
     }
 
-    public void onPostCreate(FrameLayout container) {
+    public void onPostCreate(@Nullable FrameLayout container) {
         if (container == null) {
             View root = mActivity.findViewById(android.R.id.content);
             if (root instanceof FrameLayout) {
